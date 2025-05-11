@@ -3,15 +3,16 @@ def atm_menu():
     print("1. Check Balance")
     print("2. Deposit Money")
     print("3. Withdraw Money")
-    print("4. Exit")
+    print("4. Change PIN")
+    print("5. Exit")
 
 def main():
-    correct_pin = "1234"
+    pin = "1234"
     balance = 1000
 
-    pin = input("Enter your PIN: ")
+    user_pin = input("Enter your PIN: ")
 
-    if pin != correct_pin:
+    if user_pin != pin:
         print("Incorrect PIN. Access Denied.")
         return
 
@@ -34,8 +35,17 @@ def main():
             else:
                 balance -= amount
                 print(f"₹{amount} withdrawn successfully.")
-        
+
         elif choice == "4":
+            current = input("Enter current PIN: ")
+            if current == pin:
+                new_pin = input("Enter new PIN: ")
+                pin = new_pin
+                print("PIN changed successfully.")
+            else:
+                print("Incorrect current PIN.")
+        
+        elif choice == "5":
             print("Thank you for using the ATM. Goodbye!")
             break
         else:
